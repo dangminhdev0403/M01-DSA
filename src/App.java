@@ -1,36 +1,37 @@
-import java.util.List;
+import java.util.*;
 
 /**
  * App
  */
 public class App {
-    public static boolean linaerSearch(List<Integer> arr,int n,int x){
-        for(int i=0 ;i <n ;i++){
-            if(x==arr.get(i)){
-                return true;
-            }
-            
-        }
-        return false ;
-    }
-    public static boolean binarySearch(List<Integer> arr,int n,int x){
-        int l = 0 ; 
-        int r =n -1 ;
-        while (l <= r) {
-            int mid= (l+r)/ 2;
-            if(arr.get(mid)==x){
-                return true ;
-            }
-            else if(arr.get(mid)< x){
-                l = mid +1 ;
-            }else{
-                r = mid - 1;
-            }
-        }
-        return false ;
 
-    }
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n  =sc.nextInt() ;
         
+        List <Integer> arr = new ArrayList<>() ;
+        for(int i = 0 ; i < n ; i++){
+            arr.add(sc.nextInt());
+        }
+
+        //  Collections.sort(arr) ;   sắp xếp  Tăng dần 
+
+      Collections.sort(arr,new Comparator<Integer>() {
+
+        @Override
+        public int compare(Integer a, Integer b) {
+            //  -1  a đứng trước b
+            //  1  a đứng sau b
+            //  0 giữ im vị trí
+            if(a > b) return -1;
+
+            else return 1 ;
+        }
+
+        
+      }) ;
+        for(int x : arr){
+            System.out.print(x+" ");
+        } 
     }
 }
