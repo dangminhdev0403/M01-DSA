@@ -1,27 +1,32 @@
 import java.util.*;
-// 3 cái Set  chỉ lưu các phần tử khác nhau
-// HashSet không sắp xếp , thứ tự phần tử xuất hiện ngẫu nhiễn
-// LinkedHashSet cái nào nhập trước in ra trước
-// TreeSet sắp xếp thứ tự tăng dần
+// 3 cái Map  lưu theo dạng (key, value) , có thể quy định key , value
+// HashMap không sắp xếp , thứ tự phần tử xuất hiện ngẫu nhiễn
+// LinkedHashMap cái nào nhập trước in ra trước
+// TreeMap sắp xếp thứ tự tăng dần
 
 
 public class App {
     public static void main(String[] args) {
         int a;
         Scanner sc = new Scanner(System.in);
-        // HashSet<Integer> set = new HashSet<>();
-        // LinkedHashSet<Integer> set = new LinkedHashSet<>();
-        TreeSet<Integer> set = new TreeSet<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
+        // LinkedHashMap<Integer,Integer> map = new LinkedHashMap<>();
+        // TreeMap<Integer,Integer> map = new TreeMap<>();
 
         int n = sc.nextInt();
         for (int i = 0; i < n; i++) {
             a = sc.nextInt();
-            set.add(a);
+            map.put(i,a);
         }
+        map.put(8, 8);
+        map.put(7, 10);
+        map.put(6, 10);
+        // ép map thành set đẻ duyệt map
+        Set<Map.Entry<Integer, Integer>> entrySet = map.entrySet();
 
-        for(int x : set){
-            System.out.print(x+" ");
+        for(Map.Entry<Integer, Integer> entry : entrySet){
+            System.out.println(entry.getKey() + " " + entry.getValue());
+
         }
-
     }
 }
